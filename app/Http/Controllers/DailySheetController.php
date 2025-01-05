@@ -120,4 +120,11 @@ class DailySheetController extends Controller
             return $dailySheet->load(['priorities', 'avoidItems', 'gratitudeItems']);
         });
     }
+
+    public function index()
+    {
+        return DailySheet::with(['priorities', 'avoidItems', 'gratitudeItems'])
+            ->orderBy('date', 'desc')
+            ->get();
+    }
 } 
